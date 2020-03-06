@@ -1,0 +1,60 @@
+package pt.isel.daw
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.ComponentScan
+import org.springframework.stereotype.Component
+import java.sql.Connection
+
+interface MyDataSource {
+    fun getConnection() : Connection
+}
+
+@Component
+class StudentsDbHelper(val dataSource: MyDataSource)
+
+interface Handler {
+    val method: String
+    val pathTemplate: String
+}
+
+@Component
+class Router(val handlers : List<Handler>)
+
+@Component
+class GetStudents(val dataSource: MyDataSource) : Handler {
+    override val method = "GET"
+    override val pathTemplate = "/students"
+}
+
+@Component
+class GetStudentById(val helper: StudentsDbHelper) : Handler {
+    override val method = "GET"
+    override val pathTemplate = "/students/{id}"
+}
+
+@Component
+class GetStudentByName(val helper: StudentsDbHelper) : Handler {
+    override val method = "GET"
+    override val pathTemplate = "/students-by-name/{name}"
+}
+
+@ComponentScan
+class LsConfig {
+    @Bean
+    fun myDataSource() : MyDataSource = object : MyDataSource{
+        override fun getConnection(): Connection {
+            throw NotImplementedError()
+        }
+    }
+}
+
+fun main() {
+    val context = AnnotationConfigApplicationContext(
+        LsConfig::class.java
+    )
+
+    val router = context.getBean(Router::class.java)
+    println("Available handlers: ${router.handlers.size}")
+
+}
