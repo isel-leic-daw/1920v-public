@@ -7,5 +7,5 @@ interface Heater {
     /**
      * The heater's current enabled state
      */
-    var state: EnabledState
+    var state: Power
 }

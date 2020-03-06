@@ -1,6 +1,15 @@
 package isel.leic.daw.hvac
 
+import java.lang.Float.parseFloat
+import java.lang.NumberFormatException
 import kotlin.math.abs
+
+/**
+ * Extension method that parses the string as a [Temperature] value and returns the result.
+ *
+ * @return  the resulting [Temperature] instance or null if the string could not be parsed as a valid temperature.
+ */
+fun String.toTemperature(): Temperature? = try { Temperature(parseFloat(this)) } catch(e: NumberFormatException) { null }
 
 /**
  * Data type for representing temperatures in the context of the HVAC system. All values are expressed in
@@ -38,4 +47,25 @@ class Temperature private constructor(val value: Float) {
      *          values are said to be 'approximately equal' if their difference is within a predetermined interval.
      */
     infix fun isApproximateTo(another: Temperature) = abs(value - another.value) <= 0.5f
+
+    /**
+     * Subtracts the given value from the current temperature value.
+     *
+     * @param   value   The value to subtract from the current instance.
+     * @return  the resulting [Temperature] instance or null if the result is not within the admissible values.
+     */
+    operator fun minus(value: Float): Temperature? = of(this.value - value)
+
+    /**
+     * Adds the given value to the current temperature value.
+     *
+     * @param   value   The value to add to the current instance.
+     * @return  the resulting [Temperature] instance or null if the result is not within the admissible values.
+     */
+    operator fun plus(value: Float): Temperature? = of(this.value + value)
+
+    /**
+     * Returns a string representation of the current instance.
+     */
+    override fun toString() = "Temperature(value=$value)"
 }
