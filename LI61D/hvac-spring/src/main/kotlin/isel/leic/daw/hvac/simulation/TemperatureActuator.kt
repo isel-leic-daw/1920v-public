@@ -4,6 +4,7 @@ import isel.leic.daw.hvac.Cooler
 import isel.leic.daw.hvac.Heater
 import isel.leic.daw.hvac.Power
 import isel.leic.daw.hvac.Temperature
+import org.springframework.stereotype.Component
 import java.util.*
 import kotlin.concurrent.fixedRateTimer
 
@@ -42,6 +43,7 @@ private class TemperatureActuator(
 /**
  * Implementation of a cooling system simulator
  */
+@Component
 class CoolerSimulator(sensor: SensorSimulator) : Cooler {
 
     private val actuator = TemperatureActuator(sensor, "Cooler running") { (it - 1f) ?: it }
@@ -61,6 +63,7 @@ class CoolerSimulator(sensor: SensorSimulator) : Cooler {
 /**
  * Implementation of a heating system simulator
  */
+@Component
 class HeaterSimulator(sensor: SensorSimulator) : Heater {
 
     private val actuator = TemperatureActuator(sensor, "Heater running") { (it + 1f) ?: it }

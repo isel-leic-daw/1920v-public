@@ -1,10 +1,8 @@
-import isel.leic.daw.hvac.Hvac
-import isel.leic.daw.hvac.Power
-import isel.leic.daw.hvac.Temperature
+package isel.leic.daw.hvac
+
 import isel.leic.daw.hvac.simulation.CoolerSimulator
 import isel.leic.daw.hvac.simulation.HeaterSimulator
 import isel.leic.daw.hvac.simulation.SensorSimulator
-import isel.leic.daw.hvac.toTemperature
 
 private enum class CommandResult { EXIT, CONTINUE }
 
@@ -37,7 +35,7 @@ private fun initRouter(hvac: Hvac): Router {
             CommandResult.CONTINUE
         },
         Pair("GET", "/temperature/target") to { _: String? ->
-            println("Target temperature is ${hvac.current}")
+            println("Target temperature is ${hvac.target}")
             CommandResult.CONTINUE
         },
         Pair("PUT", "/temperature/target") to { params: String? ->
@@ -51,7 +49,7 @@ private fun initRouter(hvac: Hvac): Router {
     fun parameterizeCommand(params: String?, cmd: Command): ParameterizedCommand {
         return { cmd(params) }
     }
-    
+
     val defaultCommand: Command = {
         println("Please enter a valid command");
         CommandResult.CONTINUE
@@ -62,8 +60,9 @@ private fun initRouter(hvac: Hvac): Router {
             val input = it.split(' ')
             val cmd = mappings.getOrDefault(input[0] to input.getOrNull(1), defaultCommand)
             parameterizeCommand(input.getOrNull(2), cmd)
+        } else {
+            parameterizeCommand(null, defaultCommand)
         }
-        else { parameterizeCommand(null, defaultCommand) }
     }
 }
 

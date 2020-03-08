@@ -1,10 +1,13 @@
 package isel.leic.daw.hvac
 
+import org.springframework.stereotype.Component
+
 /**
  * The HVAC implementation.
  *
  * @constructor Initiates an instance with the specified dependencies.
  */
+@Component
 class Hvac(private val sensor: Sensor, private val cooler: Cooler, private val heater: Heater) {
 
     /**
