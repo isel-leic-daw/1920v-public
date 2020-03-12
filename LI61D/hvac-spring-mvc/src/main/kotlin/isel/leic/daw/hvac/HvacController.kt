@@ -13,6 +13,9 @@ class HvacController(private val hvac: Hvac) {
     @GetMapping("/temperature/current")
     fun getCurrentTemperature() = hvac.current
 
+    @GetMapping("/temperature")
+    fun getTemperature() = TemperatureDto(hvac.current, hvac.target)
+
     @GetMapping("/hvac/power-state")
     fun getPowerState() = hvac.power
 }
