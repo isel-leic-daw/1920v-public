@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 private enum class CommandResult { EXIT, CONTINUE }
-
 private typealias Command = (String?) -> CommandResult
 private typealias ParameterizedCommand = () -> CommandResult
 private typealias Router = (String?) -> ParameterizedCommand
