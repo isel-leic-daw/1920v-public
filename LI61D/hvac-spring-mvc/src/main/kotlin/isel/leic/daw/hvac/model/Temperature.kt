@@ -3,6 +3,8 @@ package isel.leic.daw.hvac.model
 import java.lang.Float.parseFloat
 import kotlin.math.abs
 
+class InvalidTemperature : Exception()
+
 /**
  * Extension method that parses the string as a [Temperature] value and returns the result.
  *
@@ -37,6 +39,9 @@ class Temperature private constructor(val value: Float) {
          * Overload of the function call operator to have the same behavior as the [of] function
          */
         operator fun invoke(value: Float): Temperature? = of(value)
+
+        fun validate(temperature: Temperature): Boolean =
+                temperature.value <= MAX.value && temperature.value > 0
     }
 
     /**

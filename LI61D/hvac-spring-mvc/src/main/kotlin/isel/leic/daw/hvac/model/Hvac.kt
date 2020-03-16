@@ -2,6 +2,8 @@ package isel.leic.daw.hvac.model
 
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
+import org.springframework.stereotype.Repository
+import org.springframework.stereotype.Service
 
 /**
  * The HVAC implementation.
@@ -9,6 +11,8 @@ import org.springframework.stereotype.Component
  * @constructor Initiates an instance with the specified dependencies.
  */
 @Component
+@Repository
+@Service
 class Hvac(private val sensor: Sensor, private val cooler: Cooler, private val heater: Heater) {
 
     private val logger = LoggerFactory.getLogger(Hvac::class.java)
