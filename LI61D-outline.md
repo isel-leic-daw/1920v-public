@@ -1,7 +1,7 @@
 # Outline and resources #
 
 ## Week 1
-### 27/02/2019 - Course introduction
+### 27/02/2020 - Course introduction
 * Syllabus, teaching methodology and bibliography.
   * [Evaluation](https://github.com/isel-leic-daw/1920v-public/wiki/evaluation)
   * [Resources](https://github.com/isel-leic-daw/1819v-public/wiki/resources)
@@ -48,3 +48,18 @@
   * ["Introduction to Web APIs"](https://github.com/isel-leic-daw/1819v-public/wiki/Web-APIs)
   * ["Designing evolvable Web APIs: Chapter 1"](https://www.oreilly.com/library/view/designing-evolvable-web/9781449337919/ch01.html)
   * ["Designing evolvable Web APIs: Chapter 2"](https://www.oreilly.com/library/view/designing-evolvable-web/9781449337919/ch02.html)
+
+### 16/03/2020 - Web API design, continued
+* Goal: Maturing the HVAC Web API up to RMM (Richardson Maturity Model) Level 2
+    * Live coding session
+* The Spring MVC framework, revisited:
+  * [Exception Handling](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-exceptionhandler)
+  * [Testing](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#testing)
+* Error representation with [Problem-Json](https://tools.ietf.org/html/rfc7807)
+* Considerations regarding the structure of Spring MVC based applications
+  * Small demo to ilustrate the recommended structure 
+* Documentation:
+  * ["HTTP Status Code registry"](http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml)
+  * ["How to Think About HTTP Status Codes"](https://www.mnot.net/blog/2017/05/11/status_codes)
+  * ["How to fail in HTTP APIs"](https://github.com/isel-leic-daw/1819v-public/wiki/How-to-fail-in-HTTP-APIs)
+
