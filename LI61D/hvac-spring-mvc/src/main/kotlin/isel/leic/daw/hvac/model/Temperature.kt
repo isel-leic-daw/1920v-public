@@ -1,7 +1,6 @@
 package isel.leic.daw.hvac.model
 
 import java.lang.Float.parseFloat
-import java.lang.NumberFormatException
 import kotlin.math.abs
 
 /**
