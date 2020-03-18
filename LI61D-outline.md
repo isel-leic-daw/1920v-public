@@ -63,3 +63,5 @@
   * ["How to Think About HTTP Status Codes"](https://www.mnot.net/blog/2017/05/11/status_codes)
   * ["How to fail in HTTP APIs"](https://github.com/isel-leic-daw/1819v-public/wiki/How-to-fail-in-HTTP-APIs)
 
+### 18/03/2020 - Practical class
+* Goal: [Project Phase 1](https://github.com/isel-leic-daw/1920v-public/wiki/phase-1)
