@@ -1,7 +1,7 @@
-package isel.leic.daw.hvac.model.simulation
+package isel.leic.daw.hvac.common.model.simulation
 
-import isel.leic.daw.hvac.model.Sensor
-import isel.leic.daw.hvac.model.Temperature
+import isel.leic.daw.hvac.common.model.Sensor
+import isel.leic.daw.hvac.common.model.Temperature
 import isel.leic.daw.threadSafe
 import org.springframework.stereotype.Component
 import kotlin.properties.Delegates.observable

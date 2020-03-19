@@ -1,4 +1,4 @@
-package isel.leic.daw.hvac.model
+package isel.leic.daw.hvac.common.model
 
 /**
  * Contract to be supported by heaters

@@ -1,4 +1,4 @@
-package isel.leic.daw.hvac.model
+package isel.leic.daw.hvac.common.model
 
 import java.lang.Float.parseFloat
 import kotlin.math.abs

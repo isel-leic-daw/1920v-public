@@ -1,6 +1,6 @@
-package isel.leic.daw.hvac.model.simulation
+package isel.leic.daw.hvac.common.model.simulation
 
-import isel.leic.daw.hvac.model.*
+import isel.leic.daw.hvac.common.model.*
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import java.util.*

@@ -1,21 +1,26 @@
-package isel.leic.daw.hvac
+package isel.leic.daw.hvac.state
 
-import isel.leic.daw.hvac.model.Hvac
-import isel.leic.daw.hvac.model.Power
+import isel.leic.daw.hvac.common.HVAC_PATH
+import isel.leic.daw.hvac.common.POWER_STATE_PART
+import isel.leic.daw.hvac.common.model.Hvac
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PutMapping
+import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 
+/**
+ * Controller for the Hvac's state resource
+ */
 @RestController
-class HvacController(private val hvac: Hvac) {
+@RequestMapping(HVAC_PATH)
+class HvacStateController(private val hvac: Hvac) {
 
-    @GetMapping("/hvac/power-state")
-    fun getPowerState() = hvac.power
+    @GetMapping(POWER_STATE_PART)
+    fun getPowerState() = PowerStateOutputModel(hvac.power.name)
 
-    @PutMapping("/hvac/power-state")
-    fun putPowerState(state: String) {
-        hvac.power = Power.valueOf(state)
+    @PutMapping(POWER_STATE_PART)
+    fun putPowerState(state: PowerStateInputModel) {
+        hvac.power = state.toPower()
     }
-
 }
