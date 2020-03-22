@@ -49,6 +49,7 @@
   * ["Designing evolvable Web APIs: Chapter 1"](https://www.oreilly.com/library/view/designing-evolvable-web/9781449337919/ch01.html)
   * ["Designing evolvable Web APIs: Chapter 2"](https://www.oreilly.com/library/view/designing-evolvable-web/9781449337919/ch02.html)
 
+## Week 4
 ### 16/03/2020 - Web API design, continued
 * Goal: Maturing the HVAC Web API up to RMM (Richardson Maturity Model) Level 2
     * Live coding session
@@ -65,3 +66,24 @@
 
 ### 18/03/2020 - Practical class
 * Goal: [Project Phase 1](https://github.com/isel-leic-daw/1920v-public/wiki/phase-1)
+
+## Week 5
+### 23/03/2020 - Web API design, continued
+* Goal: Maturing the HVAC Web API up to RMM Level 3
+* [REST](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) constraints
+* Introduction to representation formats, evolvability, and hypermedia
+  * [Web Linking](https://tools.ietf.org/html/rfc5988)
+  * [HAL-Hypermedia Application Language](https://tools.ietf.org/html/draft-kelly-json-hal-08)
+  * [Collection+JSON](http://amundsen.com/media-types/collection/)
+  * [HAL-forms](https://rwcbook.github.io/hal-forms/)
+  * [Siren](https://github.com/kevinswiber/siren)
+* Documentation:
+  * ["Designing evolvable Web APIs: Chapter 5"](https://www.oreilly.com/library/view/designing-evolvable-web/9781449337919/ch05.html)
+  * ["Designing evolvable Web APIs: Chapter 6"](https://www.oreilly.com/library/view/designing-evolvable-web/9781449337919/ch06.html)
+* For reference:
+  * [IANA Link Relations Registry](https://www.iana.org/assignments/link-relations/link-relations.xhtml)
+  * [IANA Media Types Registry](https://www.iana.org/assignments/media-types/media-types.xhtml)
+
+### 26/03/2020 - Practical class
+* Goal: [Project Phase 1](https://github.com/isel-leic-daw/1920v-public/wiki/phase-1)
+
