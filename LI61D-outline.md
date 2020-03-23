@@ -72,7 +72,7 @@
 * Goal: Maturing the HVAC Web API up to RMM Level 3
 * [REST](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) constraints
 * Introduction to representation formats, evolvability, and hypermedia
-  * [Web Linking](https://tools.ietf.org/html/rfc5988)
+  * [Web Linking](https://tools.ietf.org/html/rfc8288)
   * [HAL-Hypermedia Application Language](https://tools.ietf.org/html/draft-kelly-json-hal-08)
   * [Collection+JSON](http://amundsen.com/media-types/collection/)
   * [HAL-forms](https://rwcbook.github.io/hal-forms/)
