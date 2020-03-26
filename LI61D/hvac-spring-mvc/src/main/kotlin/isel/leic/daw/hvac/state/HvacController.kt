@@ -3,10 +3,7 @@ package isel.leic.daw.hvac.state
 import isel.leic.daw.hvac.common.HVAC_PATH
 import isel.leic.daw.hvac.common.POWER_STATE_PART
 import isel.leic.daw.hvac.common.model.Hvac
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 
 /**
@@ -20,7 +17,8 @@ class HvacStateController(private val hvac: Hvac) {
     fun getPowerState() = PowerStateOutputModel(hvac.power.name)
 
     @PutMapping(POWER_STATE_PART)
-    fun putPowerState(state: PowerStateInputModel) {
+    fun putPowerState(@RequestBody state: PowerStateInputModel): PowerStateOutputModel {
         hvac.power = state.toPower()
+        return hvac.power.toOutputModel()
     }
 }

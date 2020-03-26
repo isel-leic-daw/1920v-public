@@ -16,7 +16,6 @@ class InvalidPowerStateException : Exception()
  * @property    value     The temperature value
  */
 class PowerStateInputModel @JsonCreator constructor(val value: String) {
-
     /**
      * Converts this instance to a [Power] instance.
      * @return  The [Power] instance
@@ -33,3 +32,8 @@ class PowerStateInputModel @JsonCreator constructor(val value: String) {
  * @property    value     The temperature value
  */
 class PowerStateOutputModel(val value: String)
+
+/**
+ * Extension method that creates an instance of [PowerStateOutputModel] from this [Power] instance
+ */
+fun Power.toOutputModel() = PowerStateOutputModel(this.name)
