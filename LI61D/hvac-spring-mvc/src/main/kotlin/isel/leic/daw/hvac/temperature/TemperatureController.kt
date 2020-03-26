@@ -30,8 +30,9 @@ class TemperatureController(private val hvac: Hvac) {
     fun getTargetTemperature() = TemperatureOutputModel(hvac.target.value)
 
     @PutMapping(TARGET_TEMPERATURE_PART, consumes = ["application/json"])
-    fun putTargetTemperature(@RequestBody newTarget: TemperatureInputModel) {
+    fun putTargetTemperature(@RequestBody newTarget: TemperatureInputModel): TemperatureInfoOutputModel {
         hvac.target = newTarget.toTemperature()
+        return TemperatureInfoOutputModel(hvac.current.value, hvac.target.value)
     }
 
     @GetMapping(CURRENT_TEMPERATURE_PART)
