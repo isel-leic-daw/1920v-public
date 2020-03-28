@@ -277,11 +277,5 @@ Missing or invalid credentials
   - Redefining the meaning of standard codes for a specific set of resources.
   - Using an unassigned status code in the 4xx or 5xx classes.
 
-A solution is to add an error representation on the response body
-
-
-
-### Formats
-
-
+A solution is to add an error representation on the response body.
   
