@@ -1,6 +1,9 @@
 package isel.leic.daw.hvac.state
 
+import isel.leic.daw.hvac.common.APPLICATION_TYPE
 import isel.leic.daw.hvac.common.HVAC_STATE_PATH
+import isel.leic.daw.hvac.common.SIREN_MEDIA_TYPE
+import isel.leic.daw.hvac.common.SIREN_SUBTYPE
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -15,6 +18,8 @@ import org.springframework.test.web.servlet.put
  * <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html#spring-mvc-test-framework">
  *     Spring Testing
  * </a> and <a href="https://github.com/jayway/JsonPath">JsonPath</a>
+ *
+ * <a href="https://jsonpath.com/">Json Path evaluator</a>
  */
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -26,24 +31,30 @@ class HvacControllerTests {
     @Test
     fun getPowerState_shouldReturn200AndPowerStateOutputModelPayload() {
         mvc.get(HVAC_STATE_PATH) {
-            accept = MediaType.APPLICATION_JSON
+            accept = MediaType(APPLICATION_TYPE, SIREN_SUBTYPE)
         }.andExpect {
             status { isOk }
-            content { contentType(MediaType.APPLICATION_JSON) }
-            jsonPath("$.value") { value("OFF") }
+            content { contentType(SIREN_MEDIA_TYPE) }
+            jsonPath("$.class[0]") { value("PowerState") }
+            jsonPath("$.properties.value") { exists() }
+            jsonPath("$.links") { exists() }
+            jsonPath("$.actions") { exists() }
         }
     }
 
     @Test
     fun putPowerState_withValidPayload_shouldReturn200() {
         mvc.put(HVAC_STATE_PATH) {
-            accept = MediaType.APPLICATION_JSON
+            accept = MediaType(APPLICATION_TYPE, SIREN_SUBTYPE)
             contentType = MediaType.APPLICATION_JSON
             content = " { \"value\": \"ON\" } "
         }.andExpect {
             status { isOk }
-            content { contentType(MediaType.APPLICATION_JSON) }
-            jsonPath("$.value") { value("ON") }
+            content { contentType(SIREN_MEDIA_TYPE) }
+            jsonPath("$.class[0]") { value("PowerState") }
+            jsonPath("$.properties.value") { value("ON") }
+            jsonPath("$.links") { exists() }
+            jsonPath("$.actions") { exists() }
         }
     }
 }

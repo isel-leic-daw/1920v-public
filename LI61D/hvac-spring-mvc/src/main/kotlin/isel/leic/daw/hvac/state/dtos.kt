@@ -1,7 +1,21 @@
 package isel.leic.daw.hvac.state
 
 import com.fasterxml.jackson.annotation.JsonCreator
+import isel.leic.daw.hvac.common.*
 import isel.leic.daw.hvac.common.model.Power
+import isel.leic.daw.hvac.temperature.SET_TARGET_TEMPERATURE_ACTION
+import org.springframework.http.HttpMethod
+import org.springframework.http.MediaType
+import java.net.URI
+
+val SET_POWER_STATE_ACTION = SirenAction(
+        name = "set-power-state",
+        title = "Set Power State",
+        href = URI(HVAC_STATE_PATH),
+        method = HttpMethod.PUT,
+        type = MediaType.APPLICATION_FORM_URLENCODED,
+        fields = listOf(SirenAction.Field("value", "number"))
+)
 
 /**
  * Exception used to report the presence of an invalid power state value. Notice that we are not using exceptions
@@ -31,9 +45,17 @@ class PowerStateInputModel @JsonCreator constructor(val value: String) {
  *
  * @property    value     The temperature value
  */
-class PowerStateOutputModel(val value: String)
+class PowerStateOutputModel(val value: String) {
+    fun toSirenObject() = SirenEntity(
+            properties = this,
+            clazz = listOf("PowerState"),
+            links = listOf(SirenLink(rel = listOf("self"), href = URI(HVAC_STATE_PATH))),
+            actions = listOf(SET_POWER_STATE_ACTION)
+    )
+}
 
 /**
  * Extension method that creates an instance of [PowerStateOutputModel] from this [Power] instance
  */
 fun Power.toOutputModel() = PowerStateOutputModel(this.name)
+

@@ -6,12 +6,13 @@ import isel.leic.daw.hvac.common.model.InvalidTemperature
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import java.net.URI
 
 /**
  * Controller for the Temperature resource
  */
 @RestController
-@RequestMapping(TEMPERATURE_PATH)
+@RequestMapping(TEMPERATURE_PATH, produces = [SIREN_MEDIA_TYPE], headers = [ "Accept=application/json"])
 class TemperatureController(private val hvac: Hvac) {
 
     @ExceptionHandler
@@ -27,17 +28,23 @@ class TemperatureController(private val hvac: Hvac) {
             ))
 
     @GetMapping(TARGET_TEMPERATURE_PART)
-    fun getTargetTemperature() = TemperatureOutputModel(hvac.target.value)
+    fun getTargetTemperature() =
+            TemperatureOutputModel(hvac.target.value)
+                    .toSirenObject(URI(TARGET_TEMPERATURE_PATH), listOf(SET_TARGET_TEMPERATURE_ACTION))
 
-    @PutMapping(TARGET_TEMPERATURE_PART, consumes = ["application/json"])
-    fun putTargetTemperature(@RequestBody newTarget: TemperatureInputModel): TemperatureInfoOutputModel {
-        hvac.target = newTarget.toTemperature()
-        return TemperatureInfoOutputModel(hvac.current.value, hvac.target.value)
+    @PutMapping(TARGET_TEMPERATURE_PART)
+    fun putTargetTemperature(@RequestBody newTemperature: TemperatureInputModel): SirenEntity<TemperatureInfoOutputModel> {
+        hvac.target = newTemperature.toTemperature()
+        return TemperatureInfoOutputModel(hvac.current.value, hvac.target.value).toSirenObject()
     }
 
     @GetMapping(CURRENT_TEMPERATURE_PART)
-    fun getCurrentTemperature() = TemperatureOutputModel(hvac.current.value)
+    fun getCurrentTemperature() =
+            TemperatureOutputModel(hvac.current.value)
+                    .toSirenObject(URI(CURRENT_TEMPERATURE_PATH))
 
     @GetMapping
-    fun getTemperature() = TemperatureInfoOutputModel(hvac.current.value, hvac.target.value)
+    fun getTemperature() =
+            TemperatureInfoOutputModel(hvac.current.value, hvac.target.value)
+                    .toSirenObject()
 }
