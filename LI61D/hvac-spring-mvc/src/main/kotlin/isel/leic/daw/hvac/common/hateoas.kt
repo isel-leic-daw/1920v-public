@@ -81,4 +81,5 @@ data class EmbeddedEntity<T>(
         val entities: List<SubEntity>? = null,
         val links: List<SirenLink>? = null,
         val actions: SirenAction? = null,
-        val title: String? = null)
+        val title: String? = null
+) : SubEntity()
