@@ -87,3 +87,30 @@
 ### 26/03/2020 - Practical class
 * Goal: [Project Phase 1](https://github.com/isel-leic-daw/1920v-public/wiki/phase-1)
 
+## Week 6
+### 30/03/2020 - Web API design, continued
+* Goal: Maturing the HVAC Web API up to RMM Level 3
+* Representation formats, evolvability, and hypermedia (continued)
+  * Navigability in a web API
+    * Concept and motivation, revisited
+    * [Json Home](https://mnot.github.io/I-D/json-home/)
+* Leveraging HTTP as an application level protocol, continued
+  * [HTTP Caching](https://tools.ietf.org/html/rfc7234)
+    * Headers `Cache-Control`, `ETag`, `Vary`
+    * [Conditional Requests](https://tools.ietf.org/html/rfc7232)
+  * [HTTP Authentication](https://tools.ietf.org/html/rfc7235)
+* Spring MVC architecture, revisited
+  * [MVC Config API](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-config)
+  * [Interceptors](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-config-interceptors): Concept and motivation
+  * [Message Converters](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-config-message-converters): Concept and motivation
+* Documentation:
+  * ["Designing evolvable Web APIs: Chapter 6"](https://www.oreilly.com/library/view/designing-evolvable-web/9781449337919/ch06.html)
+  * ["Designing evolvable Web APIs: Chapter 8"](https://www.oreilly.com/library/view/designing-evolvable-web/9781449337919/ch08.html)
+  * ["Principled Design of the Modern Web Architecture"](https://www.ics.uci.edu/~taylor/documents/2002-REST-TOIT.pdf)
+  * ["REST APIs must be hypertext-driven"](https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)
+* Examples of Hypermedia Web APIs:
+  * [Amazon API Gateway](https://docs.aws.amazon.com/apigateway/api-reference/)
+  * [Zetta](https://www.zettajs.com/)
+
+### 02/04/2020 - Practical class
+* Goal: [Project Phase 1](https://github.com/isel-leic-daw/1920v-public/wiki/phase-1)
