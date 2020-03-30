@@ -10,6 +10,8 @@ import java.net.URI
 const val APPLICATION_TYPE = "application"
 const val SIREN_SUBTYPE = "vnd.siren+json"
 const val SIREN_MEDIA_TYPE = "${APPLICATION_TYPE}/${SIREN_SUBTYPE}"
+const val JSON_HOME_SUBTYPE = "json-home"
+const val JSON_HOME_MEDIA_TYPE = "${APPLICATION_TYPE}/${JSON_HOME_SUBTYPE}"
 
 /**
  * For details regarding the Siren media type, see <a href="https://github.com/kevinswiber/siren">Siren</a>

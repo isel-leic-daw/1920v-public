@@ -1,9 +1,11 @@
 package isel.leic.daw.hvac.state
 
 import com.fasterxml.jackson.annotation.JsonCreator
-import isel.leic.daw.hvac.common.*
+import isel.leic.daw.hvac.common.HVAC_STATE_PATH
+import isel.leic.daw.hvac.common.SirenAction
+import isel.leic.daw.hvac.common.SirenEntity
+import isel.leic.daw.hvac.common.SirenLink
 import isel.leic.daw.hvac.common.model.Power
-import isel.leic.daw.hvac.temperature.SET_TARGET_TEMPERATURE_ACTION
 import org.springframework.http.HttpMethod
 import org.springframework.http.MediaType
 import java.net.URI
@@ -25,7 +27,7 @@ val SET_POWER_STATE_ACTION = SirenAction(
 class InvalidPowerStateException : Exception()
 
 /**
- * Represents poweer-state values as received by the HVAC system API
+ * Represents power-state values as received by the HVAC system API
  *
  * @property    value     The temperature value
  */
