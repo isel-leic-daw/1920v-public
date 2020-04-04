@@ -1,3 +1,19 @@
+# 2020/04/02
+
+## Prolog
+
+- Calendar
+  - This week - project development support
+  - Next week - available, namely on Thursday during the class schedule
+- Project emphasis
+  - Design and implementation of the API
+  - Using hypermedia
+- GitHub usage
+  - Repos are created and configured
+- Slack usage
+  - User name should be something like "Pedro (li61n-g00)"
+- Design notes
+
 # 2020/03/27
 
 ## Prolog
