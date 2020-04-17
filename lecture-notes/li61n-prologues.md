@@ -1,3 +1,11 @@
+# 2020/04/16
+
+- Calendar
+  - This week - End the first part (HTTP API design and implementation)
+  - Next week - Javascript review
+  - Phase 1 delivery postponed to 27 April
+    - Phase 2 will still be published on 20 April
+
 # 2020/04/02
 
 ## Prolog
