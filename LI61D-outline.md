@@ -114,3 +114,30 @@
 
 ### 02/04/2020 - Practical class
 * Goal: [Project Phase 1](https://github.com/isel-leic-daw/1920v-public/wiki/phase-1)
+
+## Week 7
+Easter break
+
+## Week 8
+### 16/04/2020 - Practical class
+* Goal: [Project Phase 1](https://github.com/isel-leic-daw/1920v-public/wiki/phase-1)
+
+## Week 9
+### 20/04/2020 - Creating a Web UI: introduction
+* Web based User Interfaces
+  * Server Side and Client Side rendering
+  * Motivations and tradeoffs
+* The React framework: Introduction
+  * Motivation and programming model
+* Bootstrapping a React based frontend
+  * [Create React App](https://facebook.github.io/create-react-app/docs/getting-started)
+* Core React concepts:
+  * [JSX](https://reactjs.org/docs/introducing-jsx.html)
+  * [Elements](https://reactjs.org/docs/rendering-elements.html)
+  * [Components and props](https://reactjs.org/docs/components-and-props.html)
+* For reference:
+  * [Getting Started](https://reactjs.org/docs/getting-started.html)
+  * [Tutorial: Intro to React](https://reactjs.org/tutorial/tutorial.html)
+
+### 23/04/2020 - Practical class
+* Goal: [Project Phase 1](https://github.com/isel-leic-daw/1920v-public/wiki/phase-1)
