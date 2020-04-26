@@ -1,4 +1,8 @@
 # 2020/04/16
+  - HTTP intermediaries and HTTP caching
+  - Project development support
+
+# 2020/04/16
 
 - Calendar
   - This week - End the first part (HTTP API design and implementation)
