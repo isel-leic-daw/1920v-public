@@ -141,3 +141,16 @@ Easter break
 
 ### 23/04/2020 - Practical class
 * Goal: [Project Phase 1](https://github.com/isel-leic-daw/1920v-public/wiki/phase-1)
+
+## Week 10
+### 27/04/2020 - Creating a Web UI: continued
+* The React framework, revisited
+  * Motivation and programming model
+* Core React concepts, revisited:
+  * [JSX](https://reactjs.org/docs/introducing-jsx.html), [Elements](https://reactjs.org/docs/rendering-elements.html), [Components and props](https://reactjs.org/docs/components-and-props.html)
+* Components and state:
+  * [State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
+  * [Controlled Components](https://reactjs.org/docs/forms.html#controlled-components)
+* For reference:
+  * [Semantic UI](https://semantic-ui.com/)
+  * [Semantic UI React](https://react.semantic-ui.com/)
