@@ -154,3 +154,13 @@ Easter break
 * For reference:
   * [Semantic UI](https://semantic-ui.com/)
   * [Semantic UI React](https://react.semantic-ui.com/)
+
+### 30/04/2020 - Creating a Web UI: continued
+* Goal: Implementing the HVAC Web UI
+* The React framework, continued
+* Components and state, revisited:
+  * [State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
+  * [Controlled Components](https://reactjs.org/docs/forms.html#controlled-components)
+* For reference:
+  * [Thinking in React](https://reactjs.org/docs/thinking-in-react.html)
+  
