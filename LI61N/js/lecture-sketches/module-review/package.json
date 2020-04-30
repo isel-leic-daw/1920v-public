@@ -12,6 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "lodash": "^4.17.15",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "standard": "^14.3.3",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
