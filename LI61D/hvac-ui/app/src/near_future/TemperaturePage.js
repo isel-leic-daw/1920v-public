@@ -1,6 +1,5 @@
 import React from 'react'
 import TemperatureCard from './TemperatureCard'
-import LifeCycle from './LifeCycle'
 
 /**
  * Component used to display the HVAC's temperature page
@@ -14,16 +13,21 @@ class TemperaturePage extends React.Component {
     super(props)
     this.state = {
       temperature: { 
-        current: { value: 30, label: "Current" },
-        target: { value: 25, label: "Target" }
+        current: { value: "", label: "Current" },
+        target: { value: "", label: "Target" }
       }
     }
   }
 
-  temperatureChanged = async (oldValue, newValue) => {
+  async componentDidMount() {
+    const temperatureInfo = await this.props.temperatureService.getTemperatureInfo()
+    this.setState({ temperature: temperatureInfo })
+  }
+
+  handleTargetTemperatureChanged = async (oldValue, newValue) => {
     this.setState({ updating: true })
     console.log(`Old value = ${oldValue}; New value = ${newValue}`)
-    const updatedTemperature = await this.props.temperatureService.updateTarget(newValue)
+    const updatedTemperature = await this.props.temperatureService.updateTargetTemperature(newValue)
     console.log(`Result is ${JSON.stringify(updatedTemperature)}`)
     this.setState({ temperature: updatedTemperature, updating: false })
   }
@@ -34,9 +38,9 @@ class TemperaturePage extends React.Component {
         <div className="ui centered cards">
           <TemperatureCard value={this.state.temperature.current.value} label={this.state.temperature.current.label} />
           <TemperatureCard value={this.state.temperature.target.value} label={this.state.temperature.target.label} 
-              editable={true} disabled={this.state.updating} onChange={this.temperatureChanged} />
+              editable={true} disabled={this.state.temperature.target.value === "" || this.state.updating} 
+              onChange={this.handleTargetTemperatureChanged} />
         </div>
-        <LifeCycle />
       </div>
     )
   }

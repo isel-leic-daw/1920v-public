@@ -6,7 +6,7 @@ import React from 'react'
 function TemperatureDisplay({ value, label }) {
   return (
     <div className="ui huge statistic">
-      <div className="value"> {value}&deg;</div>
+      <div className="value"> {value ? value : "--"}&deg;</div>
       <div className="label"> {label} </div>
     </div>  
   )
