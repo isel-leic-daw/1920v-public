@@ -6,6 +6,9 @@ import React from 'react'
  * @param {*} props - The props object with the following properties:
  *  disabled      - a boolean value indicating whether the component is disabled or not. Default is false.
  *  editable      - a boolean value indicating whether the component is editable or not. Default is true.
+ *  initialValue  - the initial temperature value.
+ *  onChange      - the callback function to be used whenever the temperature is changed by the user. The 
+ *                  function receives the temperature values initialValue and newValue.
  */
 class Control extends React.Component {
   constructor(props) {
@@ -19,15 +22,29 @@ class Control extends React.Component {
     this.setState( { editing: true } )
   }
 
+  handleSubmitButtonClick = () => {
+    this.setState( { editing: false } )
+    this.props.onChange(this.props.initialValue, this.state.currentValue)    
+  }
+
+  handleCancelButtonClick = () => {
+    this.setState( { editing: false } )
+  }
+
+  handleChangeEvent = (event) => {
+    this.setState( { currentValue: event.target.value } )
+  }
+
   renderEditingMode() {
+    const currentValue = this.state.currentValue || this.props.initialValue
     return (
       <div className="ui mini input">
-        <input type="number" placeholder="Enter new value..." /> &nbsp;
+        <input type="number" placeholder="Enter new value..." value={currentValue} onChange={this.handleChangeEvent} /> &nbsp;
         <div className="ui small basic icon buttons">
-          <div className="ui red basic button" >
+          <div className="ui red basic button" onClick={this.handleCancelButtonClick}>
             <i className="close icon" />
           </div>
-          <div className="ui green basic button">
+          <div className="ui green basic button" onClick={this.handleSubmitButtonClick}>
             <i className="check icon" />
           </div>
         </div>

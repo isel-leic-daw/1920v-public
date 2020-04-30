@@ -10,6 +10,8 @@ import Control from './Control'
  *  disabled  - a boolean value indicating whether the component is disabled or not. Default is false.
  *  value     - the temperature value to be displayed
  *  label     - the text label to be displayed along with the temperature value  
+ *  onChange  - the callback function to be used whenever the temperature is changed by the user. The 
+ *              function receives the temperature values initialValue and newValue.
  */
 function Card(props) {
   return (
@@ -18,7 +20,7 @@ function Card(props) {
         <Display { ... props } />
       </div>
       <div className="extra content">
-        <Control editable={props.editable} disabled={props.disabled} />
+        <Control editable={props.editable} disabled={props.disabled} initialValue={props.value} onChange={props.onChange} />
       </div>
     </div>
   )
