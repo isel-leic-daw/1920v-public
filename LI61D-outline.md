@@ -161,6 +161,7 @@ Easter break
 * Components and state, revisited:
   * [State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
   * [Controlled Components](https://reactjs.org/docs/forms.html#controlled-components)
-* For reference:
+* Considerations on the design of React based UIs
+  * [Lifting State Up](https://reactjs.org/docs/lifting-state-up.html)
   * [Thinking in React](https://reactjs.org/docs/thinking-in-react.html)
   
