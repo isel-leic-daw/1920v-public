@@ -1,6 +1,6 @@
 import React from 'react'
-import Display from './Display'
-import Control from './Control'
+import Display from './TemperatureDisplay'
+import Control from './TemperatureControl'
 
 /**
  * A Component used to display and eventually edit a temperature.
@@ -13,7 +13,7 @@ import Control from './Control'
  *  onChange  - the callback function to be used whenever the temperature is changed by the user. The 
  *              function receives the temperature values initialValue and newValue.
  */
-function Card(props) {
+function TemperatureCard(props) {
   return (
     <div className="ui raised centered card">
       <div className="content">
@@ -26,4 +26,4 @@ function Card(props) {
   )
 }
 
-export default Card
+export default TemperatureCard
