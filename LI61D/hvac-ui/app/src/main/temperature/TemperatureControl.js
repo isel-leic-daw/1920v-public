@@ -64,7 +64,7 @@ class TemperatureControl extends React.Component {
   }
 
   render() {
-    return !this.state.editing ? this.renderNonEditingMode() : this.renderEditingMode()
+    return this.state.editing ? this.renderEditingMode() : this.renderNonEditingMode()
   }
 }
 
