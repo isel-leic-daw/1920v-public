@@ -1,7 +1,6 @@
 import React from 'react'
 import './App.css'
-import TemperatureFragment from './temperature/TemperatureFragment'
-import HvacFragment from './hvac/HvacFragment'
+import HvacPage from './HvacPage'
 import { 
   getTemperatureService as TemperatureService, 
   getMockedTemperatureService as MockedTemperatureService 
@@ -23,8 +22,7 @@ const mockedHvacService = MockedHvacService()
 function App() {
   return (
     <div className="App">
-      <HvacFragment hvacService = {hvacService} />
-      <TemperatureFragment temperatureService = {temperatureService} />
+      <HvacPage hvacService = {hvacService} temperatureService = {temperatureService} />
     </div>
   )
 }
