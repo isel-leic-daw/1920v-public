@@ -149,11 +149,10 @@ Easter break
 * Core React concepts, revisited:
   * [JSX](https://reactjs.org/docs/introducing-jsx.html), [Elements](https://reactjs.org/docs/rendering-elements.html), [Components and props](https://reactjs.org/docs/components-and-props.html)
 * Components and state:
-  * [State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
   * [Controlled Components](https://reactjs.org/docs/forms.html#controlled-components)
 * For reference:
   * [Semantic UI](https://semantic-ui.com/)
-  * [Semantic UI React](https://react.semantic-ui.com/)
+  * ~~[Semantic UI React](https://react.semantic-ui.com/)~~ [It seems to be stale](https://github.com/Semantic-Org/Semantic-UI-React/issues/3885)
 
 ### 30/04/2020 - Creating a Web UI: continued
 * Goal: Implementing the HVAC Web UI
@@ -165,3 +164,20 @@ Easter break
   * [Lifting State Up](https://reactjs.org/docs/lifting-state-up.html)
   * [Thinking in React](https://reactjs.org/docs/thinking-in-react.html)
   
+## Week 11
+### 04/05/2020 - Creating a Web UI: continued
+* Goal: Implementing the HVAC Web UI, continued
+* The React framework, continued
+  * React's execution model
+    * For stateless components
+    * For class based statefull components
+    * Rendering, revisited
+      * [Reconciliation](https://reactjs.org/docs/reconciliation.html)
+* Further considerations on the design of React based UIs
+  * Error handling
+* For reference:
+  * [You probably don't need derived state](https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html)
+  * [React as a UI Runtime](https://overreacted.io/react-as-a-ui-runtime/)
+
+### 07/05/2020 - Practical class
+* Goal: [Project Phase 2](https://github.com/isel-leic-daw/1920v-public/wiki/phase-2)

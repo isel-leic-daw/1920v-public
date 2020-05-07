@@ -1,13 +1,13 @@
 import React from 'react'
-import TemperatureCard from './Card'
+import TemperatureCard from './TemperatureCard'
 
 /**
- * Component used to display the HVAC's temperature page
+ * Component used to display the fragment with the HVAC's temperature control
  * 
  * @param {*} props - The props object with the following properties:
  *    temperatureService - the service used to interact with the API's temperature resource
  */
-class Page extends React.Component {
+class TemperatureFragment extends React.Component {
 
   constructor(props) {
     super(props)
@@ -49,4 +49,4 @@ class Page extends React.Component {
   }
 }
 
-export default Page
+export default TemperatureFragment

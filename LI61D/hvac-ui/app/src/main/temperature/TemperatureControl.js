@@ -10,7 +10,7 @@ import React from 'react'
  *  onChange      - the callback function to be used whenever the temperature is changed by the user. The 
  *                  function receives the temperature values initialValue and newValue.
  */
-class Control extends React.Component {
+class TemperatureControl extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -64,8 +64,8 @@ class Control extends React.Component {
   }
 
   render() {
-    return !this.state.editing ? this.renderNonEditingMode() : this.renderEditingMode()
+    return this.state.editing ? this.renderEditingMode() : this.renderNonEditingMode()
   }
 }
 
-export default Control
+export default TemperatureControl
