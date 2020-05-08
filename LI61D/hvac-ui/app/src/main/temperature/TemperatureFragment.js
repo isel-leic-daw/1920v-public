@@ -21,11 +21,25 @@ class TemperatureFragment extends React.Component {
     }
   }
 
+  async fetchTemperatureInfo() {
+    return this.props.temperatureService.getTemperatureInfo().then((temperature) => {
+      if (temperature) { this.setState( { temperature } ) }
+    })
+  }
+
   async componentDidMount() {
-      this.props.temperatureService.getTemperatureInfo().then((temperature) => {
-        if (temperature)
-          this.setState( { temperature } )
-      })
+    this.fetchTemperatureInfo().then(() => { 
+      this.timerId = setInterval(() => { 
+        this.fetchTemperatureInfo()
+      }, 10000)
+    })
+  }
+
+  componentWillUnmount() {
+    if (this.timerId) {
+      clearInterval(this.timerId)
+    }
+    // TODO: cancel ongoing requests, if they exist
   }
 
   handleTargetTemperatureChanged = async (oldValue, newValue) => {
