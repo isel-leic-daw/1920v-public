@@ -1,6 +1,10 @@
 import React from 'react'
 // import StudentList from './StudentList'
-import Counter from './Counter2'
+import Counter from './Counter3'
+// import TimedCounter from './TimedCounter'
+import Counters from './Counters'
+// import FormExample from './FormExample'
+import CounterUsingHooks0 from './CounterUsingHooks0'
 
 const students = [
   { name: 'Alice', number: 12345 },
@@ -10,10 +14,18 @@ const students = [
   { name: 'Eleanor', number: 12349 }
 ]
 
-export default function App ({ len }) {
+function range (len) { return [...Array(len).keys()] }
+
+export function App2 ({ len }) {
   return (
     <div>
-      {Array.from(Array(len).keys()).map(ix => <Counter key={ix} />)}
+      {range(10).map(ix => <Counter key={ix} />)}
     </div>
+  )
+}
+
+export default function App ({ len }) {
+  return (
+    <Counters />
   )
 }

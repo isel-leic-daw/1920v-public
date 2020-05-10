@@ -1,5 +1,5 @@
 import React from 'react'
-import Counter from './Counter'
+import Counter from './CounterUsingHooks0'
 
 export default class Counters extends React.Component {
   constructor (props) {
@@ -10,12 +10,21 @@ export default class Counters extends React.Component {
   render () {
     return (
       <>
-        {Array.from(Array(10).keys()).map(ix => <Counter key={ix} notify={(value) => this.update(ix, value)} />)}
+        {Array.from(Array(10).keys()).map(ix => <Counter key={ix} callback={(value) => this.update(ix, value)} />)}
         <div>
-          {this.state.counters.reduce((old, item) => old + item, 0)}
+          {Counters.sum(this.state.counters)}
         </div>
       </>
     )
+  }
+
+  static sum (counters) {
+    return counters.reduce((acc, item) => {
+      if (item) {
+        return item + acc
+      }
+      return acc
+    }, 0)
   }
 
   update (ix, value) {
