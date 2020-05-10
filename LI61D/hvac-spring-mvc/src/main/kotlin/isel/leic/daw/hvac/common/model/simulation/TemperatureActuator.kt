@@ -23,7 +23,7 @@ private class TemperatureActuator(
     fun start() {
         if (timer == null) {
             logger.info(message)
-            timer = fixedRateTimer(message, initialDelay = 5 * 1000, period = 5 * 1000) {
+            timer = fixedRateTimer(message, initialDelay = 10 * 1000, period = 10 * 1000) {
                     sensor.temperature = actuator(sensor.temperature)
             }
         }

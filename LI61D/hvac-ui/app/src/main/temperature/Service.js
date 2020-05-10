@@ -15,7 +15,7 @@ export function getTemperatureService() {
       const response = await fetch('http://localhost:8080/temperature')
       const content = await response.json()
       return temperatureInfoFromSiren(content)
-  },
+    },
 
     updateTargetTemperature: async (newValue) => {
       console.log(`TemperatureService.updateTarget(${newValue})`)
