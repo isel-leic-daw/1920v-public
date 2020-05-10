@@ -1,4 +1,5 @@
 import React from 'react'
+import HvacContext from '../HvacContext'
 
 /**
  * Component used to edit a temperature value.
@@ -6,13 +7,14 @@ import React from 'react'
  * @param {*} props - The props object with the following properties:
  *  disabled      - a boolean value indicating whether the component is disabled or not. Default is false.
  *  editable      - a boolean value indicating whether the component is editable or not. Default is true.
- *  errorState    - a boolean value indicating whether the component should be displayed on its error state. 
- *                  Default is false.
  *  initialValue  - the initial temperature value.
  *  onChange      - the callback function to be used whenever the temperature is changed by the user. The 
  *                  function receives the temperature values initialValue and newValue.
  */
 class TemperatureControl extends React.Component {
+
+  static contextType = HvacContext
+
   constructor(props) {
     super(props)
     this.state = {
@@ -55,9 +57,10 @@ class TemperatureControl extends React.Component {
   }
 
   renderNonEditingMode() {
+    const contextValue = this.context
     let buttonClass = 'ui basic blue button'
-    if (this.props.errorState) buttonClass = 'ui disabled basic red button'
-    if (this.props.disabled && !this.props.errorState) buttonClass = 'ui disabled loading basic blue button'
+    if (contextValue.errorMessage) buttonClass = 'ui disabled basic red button'
+    if (this.props.disabled && !contextValue.errorMessage) buttonClass = 'ui disabled loading basic blue button'
 
     return (
       <div style={{ visibility: this.props.editable ? "visible" : "hidden", height: "30pt" }}>
