@@ -6,8 +6,6 @@ import TemperatureCard from './TemperatureCard'
  * 
  * @param {*} props - The props object with the following properties:
  *    temperatureService  - the service used to interact with the API's temperature resource
- *    errorState          - a boolean value indicating whether the component should be displayed on its error state. 
- *                          Default is false.
  */
 class TemperatureFragment extends React.Component {
 
@@ -58,12 +56,12 @@ class TemperatureFragment extends React.Component {
       <div className="ui text container">
         <div className="ui centered cards">
           <TemperatureCard value={this.state.temperature.current.value} 
-              label={this.state.temperature.current.label} errorState={this.props.errorState} />
+              label={this.state.temperature.current.label} />
 
           <TemperatureCard value={this.state.temperature.target.value} 
               label={this.state.temperature.target.label} 
               editable={true} disabled={this.state.temperature.target.value === "" || this.state.updating} 
-              onChange={this.handleTargetTemperatureChanged} errorState={this.props.errorState} />
+              onChange={this.handleTargetTemperatureChanged} />
         </div>
       </div>
     )
