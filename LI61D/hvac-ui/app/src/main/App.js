@@ -20,9 +20,21 @@ const mockedHvacService = MockedHvacService()
 
 
 function App() {
+
+  let page = undefined
+  switch(window.location.pathname) {
+    case '/hvac': 
+      page = <HvacPage hvacService = {hvacService} temperatureService = {temperatureService} />
+      break;
+    
+    default:
+      page = <a href="./hvac">HVAC</a>
+      break;
+  }
+
   return (
     <div className="App">
-      <HvacPage hvacService = {hvacService} temperatureService = {temperatureService} />
+      {page}
     </div>
   )
 }

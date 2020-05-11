@@ -1,6 +1,7 @@
 import React from 'react'
 import Display from './TemperatureDisplay'
 import Control from './TemperatureControl'
+import HvacContext from '../HvacContext'
 
 /**
  * A Component used to display and eventually edit a temperature.
@@ -14,17 +15,23 @@ import Control from './TemperatureControl'
  *                function receives the temperature values initialValue and newValue.
  */
 function TemperatureCard(props) {
-  const cardClass = props.errorState ? "ui red raised centered card" : "ui raised centered card"
   return (
-    <div className={cardClass}>
-      <div className="content">
-        <Display { ... props } />
-      </div>
-      <div className="extra content">
-        <Control editable={props.editable} disabled={props.disabled} initialValue={props.value} 
-          onChange={props.onChange} />
-      </div>
-    </div>
+    <HvacContext.Consumer>
+      { value =>  {
+          const cardClass = value.errorMessage ? "ui red raised centered card" : "ui raised centered card"
+          return (
+            <div className={cardClass}>
+              <div className="content">
+                <Display { ... props } />
+              </div>
+              <div className="extra content">
+                <Control editable={props.editable} disabled={props.disabled} initialValue={props.value} 
+                  onChange={props.onChange} />
+              </div>
+            </div>
+          )
+      }}
+    </HvacContext.Consumer>
   )
 }
 
