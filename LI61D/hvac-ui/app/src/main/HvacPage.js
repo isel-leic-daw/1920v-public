@@ -1,6 +1,7 @@
 import React from 'react'
 import HvacControl from './hvac/HvacControl'
 import TemperatureFragment from './temperature/TemperatureFragment'
+import HvacContext from './HvacContext'
 
 /**
  * Gets an implementation of the TemperatureService contract that handles the errors thrown by the received
@@ -69,15 +70,15 @@ class HvacPage extends React.Component {
   }
 
   render() {
-    const errorMessage = this.maybeRenderError()
-    const powerState = (!this.state || this.state.updating || errorMessage) ? '' : this.state.powerState.value
-    const control = errorMessage ? errorMessage : <HvacControl powerState={powerState} onChange={this.handlePowerStateChanged} />
+    const errorMessageElement = this.maybeRenderError()
+    const powerState = (!this.state || this.state.updating || errorMessageElement) ? '' : this.state.powerState.value
+    const powerControlPlaceholder = errorMessageElement ? errorMessageElement : 
+            <HvacControl powerState={powerState} onChange={this.handlePowerStateChanged} />
     return ( 
-      <>
-        {control}
-        <TemperatureFragment temperatureService={wrapWithErrorHandler(this.props.temperatureService, this.handleTemperatureServiceError)} 
-            errorState={errorMessage !== undefined} />
-      </>
+      <HvacContext.Provider value={{ errorMessage: this.state && this.state.errorMessage ? this.state.errorMessage : undefined }}>
+        {powerControlPlaceholder}
+        <TemperatureFragment temperatureService={wrapWithErrorHandler(this.props.temperatureService, this.handleTemperatureServiceError)} />
+      </HvacContext.Provider>
     )
   }
 }
