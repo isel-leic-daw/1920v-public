@@ -5,6 +5,8 @@ import Counter from './Counter3'
 import Counters from './Counters'
 // import FormExample from './FormExample'
 import CounterUsingHooks0 from './CounterUsingHooks0'
+import RouterExample from './RouterExample'
+import FetchExample from './FetchExample'
 
 const students = [
   { name: 'Alice', number: 12345 },
@@ -26,6 +28,6 @@ export function App2 ({ len }) {
 
 export default function App ({ len }) {
   return (
-    <Counters />
+    <RouterExample />
   )
 }
