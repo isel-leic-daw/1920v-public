@@ -183,7 +183,7 @@ Easter break
 * Goal: [Project Phase 2](https://github.com/isel-leic-daw/1920v-public/wiki/phase-2)
 
 ## Week 12
-### 11/06/2020 - Creating a Web UI: continued
+### 11/05/2020 - Creating a Web UI: continued
 * Goal: Implementing the HVAC Web UI, continued
 * Considerations on the design of React based UIs
   * Error Handling
@@ -191,5 +191,19 @@ Easter break
   * Component: props and state (revisited)
   * [Context API](https://reactjs.org/docs/context.html) 
 
-### 14/06/2020 - Practical class
+### 14/05/2020 - Practical class
+* Goal: [Project Phase 2](https://github.com/isel-leic-daw/1920v-public/wiki/phase-2)
+
+## Week 13
+### 18/05/2020 - Creating a Web UI: continued
+* Goal: Implementing the HVAC Web UI, continued
+* Declarative routing in React
+  * [React Router](https://reacttraining.com/react-router/web/api/)
+* Considerations on the creation of hypermedia driven clients
+  * Motivation and trade-offs
+  * Hypermedia used to express (and obtain):
+    * Navigation information
+    * Application capabilities
+
+### 21/05/2020 - Practical class
 * Goal: [Project Phase 2](https://github.com/isel-leic-daw/1920v-public/wiki/phase-2)
