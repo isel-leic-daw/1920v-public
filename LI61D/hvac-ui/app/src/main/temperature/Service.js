@@ -6,21 +6,20 @@ function temperatureInfoFromSiren(sirenContent) {
 }
 
 /**
- * Function used to obtain a mocked version of the service associated to the temperature resource
+ * Function used to obtain the service associated to the temperature resource
+ * @param {URL} resourceUrl - The URL of the temperature resource
  */
-export function getTemperatureService() {
+export function getTemperatureService(resourceUrl) {
   return {
     getTemperatureInfo: async () => {
       console.log(`TemperatureService.getTemperatureInfo()`)
-      const response = await fetch('http://localhost:8080/temperature')
+      const response = await fetch(resourceUrl)
       const content = await response.json()
       return temperatureInfoFromSiren(content)
     },
 
     updateTargetTemperature: async (newValue) => {
       console.log(`TemperatureService.updateTarget(${newValue})`)
-      // The error that was being shown during the final phase of the stream was simply that
-      // a TODO: was here instead of the actual implementation :P (LOL, what a noob)
       const response = await fetch('http://localhost:8080/temperature/target', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },

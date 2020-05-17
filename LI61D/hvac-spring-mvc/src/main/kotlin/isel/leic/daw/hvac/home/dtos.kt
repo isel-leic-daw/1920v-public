@@ -12,8 +12,8 @@ data class Navigation(val api: ApiInfo, val resources: Resources)
  * Used to describe the set of resources reachable from the home resource.
  */
 data class Resources(
-        val power_state: NavigationLink,
-        val temperature: NavigationLink
+        val power_state: NavigationLink? = null,
+        val temperature: NavigationLink? = null
 )
 
 /**

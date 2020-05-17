@@ -12,7 +12,7 @@ val SET_TARGET_TEMPERATURE_ACTION = SirenAction(
     title = "Set Target Temperature",
     href = URI(TARGET_TEMPERATURE_PATH),
     method = HttpMethod.PUT,
-    type = MediaType.APPLICATION_FORM_URLENCODED,
+    type = MediaType.APPLICATION_JSON,
     fields = listOf(SirenAction.Field("value", "number"))
 )
 
