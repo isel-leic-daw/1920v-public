@@ -15,7 +15,7 @@ val SET_POWER_STATE_ACTION = SirenAction(
         title = "Set Power State",
         href = URI(HVAC_STATE_PATH),
         method = HttpMethod.PUT,
-        type = MediaType.APPLICATION_FORM_URLENCODED,
+        type = MediaType.APPLICATION_JSON,
         fields = listOf(SirenAction.Field("value", "number"))
 )
 
@@ -43,9 +43,9 @@ class PowerStateInputModel @JsonCreator constructor(val value: String) {
 }
 
 /**
- * Represents temperature values as reported by the HVAC system API
+ * Represents power-state values as reported by the HVAC system API
  *
- * @property    value     The temperature value
+ * @property    value     The power state value
  */
 class PowerStateOutputModel(val value: String) {
     fun toSirenObject() = SirenEntity(
