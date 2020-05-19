@@ -30,11 +30,13 @@ export function getMockedHomeService() {
 /**
  * Function used to obtain the service associated to the home resource
  */
-export function getHomeService(homeUrl) {
+export function getHomeService(homeUrl, authToken) {
   return {
     getHomeInfo: async () => {
       console.log(`HomeService.getHomeInfo()`)
-      const response = await fetch(homeUrl)
+      const response = await fetch(homeUrl, {
+        headers: { 'Authorization': authToken }
+      })
       return await response.json()
     }
   }

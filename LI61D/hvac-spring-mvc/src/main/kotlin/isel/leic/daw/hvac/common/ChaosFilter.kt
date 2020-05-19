@@ -22,9 +22,9 @@ class ChaosFilter(private val env: Environment) : Filter {
     private val logger = LoggerFactory.getLogger(ChaosFilter::class.java)
 
     private fun getHeaderContent(httpRequest: HttpServletRequest, headerName: String) =
-            if (headerName.equals("authorization", ignoreCase = true) || headerName.equals("cookie", ignoreCase = true))
+            /*if (headerName.equals("authorization", ignoreCase = true) || headerName.equals("cookie", ignoreCase = true))
                 "<obfuscated>"
-            else httpRequest.getHeader(headerName)
+            else*/ httpRequest.getHeader(headerName)
 
     override fun doFilter(request: ServletRequest?, response: ServletResponse?, chain: FilterChain?) {
 

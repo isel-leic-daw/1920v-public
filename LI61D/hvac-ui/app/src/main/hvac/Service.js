@@ -34,25 +34,29 @@ function powerStateUpdateActionFromSiren(sirenContent) {
  * power state resource.
  * @param {string} newValue - The new power state
  * @param {object} action - The action describing the operation (i.e. a Siren Action) 
+ * @param {string} authToken - The authorization token to be added to the requests
  */
-function initRequestFromAction(newValue, action) {
+function initRequestFromAction(newValue, action, authToken) {
   // TODO: This should be a bit more generic, but you get where this is going. ;)
   return  {
     method: action.method,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'Autorization': authToken },
     body: JSON.stringify({ value: newValue })
   }
 }
 
 /**
  * Function used to obtain the service associated to the HVAC's power-state resource
- * @param {URL} resourceUrl - The absolute URL of the HVAC's power-state resource
+ * @param {URL} resourceUrl  - The absolute URL of the HVAC's power-state resource
+ * @param {string} authToken - The authorization token to be added to the requests
  */
-export function getHvacService(resourceUrl) {
+export function getHvacService(resourceUrl, authToken) {
   return {
     getPowerState: async () => {
       console.log(`HvacService.getPowerState()`)
-      const response = await fetch(resourceUrl)
+      const response = await fetch(resourceUrl, {
+        headers: { 'Authorization': authToken }
+      })
       return await response.json()
     },
 
@@ -63,7 +67,7 @@ export function getHvacService(resourceUrl) {
 
       const baseUrl = resourceUrl
       console.log(`HvacService.updatePowerState(${newValue})`)
-      const response = await fetch(new URL(action.href, baseUrl), initRequestFromAction(newValue, action))
+      const response = await fetch(new URL(action.href, baseUrl), initRequestFromAction(newValue, action, authToken))
       return await response.json()
     },
 
