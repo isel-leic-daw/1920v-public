@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css'
 import HvacPage from './HvacPage'
+import LoginPage from './login/LoginPage'
 import { getTemperatureService as TemperatureService } from './temperature/Service'
 import { getHvacService as HvacService } from './hvac/Service'
 import { getHomeService as HomeService} from './home/Service'
@@ -56,7 +57,7 @@ function RouteRenderer({ homeInfo }) {
   return (
     <Switch>
       <Route exact path="/login">
-        <></>
+        <LoginPage />
       </Route>
       <Route exact path="/hvac">
         { isOnline ? 
