@@ -28,6 +28,7 @@ class SampleAuthorizationInterceptor : HandlerInterceptor {
 		// Note: Pre-flight requests are not subject to authorization
 		return if (request.method.compareTo("options", true) != 0 &&
 				request.getHeader("Authorization").isNullOrBlank()) {
+			response.addHeader("WWW-Authenticate", "Basic")
 			response.sendError(HttpStatus.UNAUTHORIZED.value()); false
 		} else true
 	}
