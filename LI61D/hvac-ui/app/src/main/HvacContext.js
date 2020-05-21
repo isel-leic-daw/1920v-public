@@ -3,7 +3,7 @@ import React from 'react'
 /**
  * The context default value. 
  * 
- * I'm using mnostly for documentating the contract between the context provider (i.e. HvacPage) 
+ * I'm using it mostly for documentating the contract between the context provider (i.e. HvacPage) 
  * and its consumers.
  * 
  * @property{string}  errorMessage - The error message if the current state is the error state,

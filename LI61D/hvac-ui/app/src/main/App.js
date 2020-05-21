@@ -1,11 +1,13 @@
 import React from 'react'
 import './App.css'
 import HvacPage from './HvacPage'
+import LoginPage from './login/LoginPage'
 import { getTemperatureService as TemperatureService } from './temperature/Service'
 import { getHvacService as HvacService } from './hvac/Service'
 import { getHomeService as HomeService} from './home/Service'
 
 import { Route, Switch, Redirect } from "react-router-dom"
+import LoginContext from './login/LoginContext'
 
 // TODO: this should be an environment variable
 const API_BASE_URL = "http://localhost:8080"
@@ -43,20 +45,21 @@ function Offline() {
   )
 }
 
-function RouteRenderer({ homeInfo }) {
+function RouteRenderer({ homeInfo, authToken }) {
+
   // Do we have a link with the 'temperature' rel-type? If so, we are good to go.
   const isOnline = homeInfo && homeInfo.resources.temperature
   const temperatureService = !isOnline ? undefined : 
-        TemperatureService(new URL(homeInfo.resources.temperature.href, API_BASE_URL))
+        TemperatureService(new URL(homeInfo.resources.temperature.href, API_BASE_URL), authToken)
   
   // Do we have a link with the 'power_state' rel-type? If so, we enable power control in the UI.
   const hvacService = !homeInfo || !homeInfo.resources.power_state ? undefined : 
-        HvacService(new URL(homeInfo.resources.power_state.href, API_BASE_URL)) 
+        HvacService(new URL(homeInfo.resources.power_state.href, API_BASE_URL), authToken) 
 
   return (
     <Switch>
       <Route exact path="/login">
-        <></>
+        <LoginPage />
       </Route>
       <Route exact path="/hvac">
         { isOnline ? 
@@ -76,8 +79,10 @@ function RouteRenderer({ homeInfo }) {
  */
 class App extends React.Component {
 
+  static contextType = LoginContext
+
   async componentDidMount() {
-    const homeService = HomeService(new URL(HOME_PATH, API_BASE_URL))
+    const homeService = HomeService(new URL(HOME_PATH, API_BASE_URL), this.context.loginService.getToken())
     const homeInfo = await homeService.getHomeInfo()
     this.setState( { homeInfo } )
   }
@@ -85,7 +90,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        { !this.state ? <Loading /> : <RouteRenderer homeInfo={this.state.homeInfo} />}
+        { !this.state ? 
+              <Loading /> : 
+              <RouteRenderer homeInfo={this.state.homeInfo} authToken={this.context.loginService.getToken()} />
+        }
       </div>
     )
   }

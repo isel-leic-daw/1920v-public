@@ -9,11 +9,13 @@ function temperatureInfoFromSiren(sirenContent) {
  * Function used to obtain the service associated to the temperature resource
  * @param {URL} resourceUrl - The URL of the temperature resource
  */
-export function getTemperatureService(resourceUrl) {
+export function getTemperatureService(resourceUrl, authToken) {
   return {
     getTemperatureInfo: async () => {
       console.log(`TemperatureService.getTemperatureInfo()`)
-      const response = await fetch(resourceUrl)
+      const response = await fetch(resourceUrl, {
+        headers: { 'Authorization': authToken }
+      })
       const content = await response.json()
       return temperatureInfoFromSiren(content)
     },
@@ -22,7 +24,7 @@ export function getTemperatureService(resourceUrl) {
       console.log(`TemperatureService.updateTarget(${newValue})`)
       const response = await fetch('http://localhost:8080/temperature/target', {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Autorization': authToken },
         body: JSON.stringify({ value: newValue })
       })
       const content = await response.json()
