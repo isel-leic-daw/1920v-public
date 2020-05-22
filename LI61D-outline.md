@@ -225,3 +225,6 @@ Easter break
   * [React as a UI Runtime](https://overreacted.io/react-as-a-ui-runtime/)
   * [Function components and Class components](https://overreacted.io/how-are-function-components-different-from-classes/)
   * [A Complete Guide to useEffect](https://overreacted.io/a-complete-guide-to-useeffect/)
+
+### 28/05/2020 - Practical class
+* Goal: [Project Phase 2](https://github.com/isel-leic-daw/1920v-public/wiki/phase-2)
