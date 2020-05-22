@@ -207,3 +207,21 @@ Easter break
 
 ### 21/05/2020 - Practical class
 * Goal: [Project Phase 2](https://github.com/isel-leic-daw/1920v-public/wiki/phase-2)
+
+## Week 14
+### 25/05/2020 - Creating a Web UI: continued
+* Goal: Implementing the HVAC Web UI, continued
+* Considerations on the design of React based UIs
+  * [Favoring composition](https://reactjs.org/docs/composition-vs-inheritance.html)
+  * **Be mindfull of where your state is**
+    * React's execution model, revisited
+      * For class based components (statefull)
+      * For function based components (formerly, named stateless)
+    * Considerations on the shortcomings of APIs based on inheritance and overriding of lifecycle callbacks
+  * [React Hooks](https://reactjs.org/docs/hooks-overview.html)
+    * Concept and motivation
+    * Execution model for function based components (both stateless and statefull)
+* For reference:
+  * [React as a UI Runtime](https://overreacted.io/react-as-a-ui-runtime/)
+  * [Function components and Class components](https://overreacted.io/how-are-function-components-different-from-classes/)
+  * [A Complete Guide to useEffect](https://overreacted.io/a-complete-guide-to-useeffect/)
