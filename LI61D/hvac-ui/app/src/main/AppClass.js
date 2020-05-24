@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React from 'react'
 import './App.css'
 import HvacPage from './HvacPage'
 import LoginPage from './login/LoginPage'
@@ -75,29 +75,31 @@ function RouteRenderer({ homeInfo, authToken }) {
 }
 
 /**
- * The application's root component
+ * The application's root component.
+ * 
+ * The component is deprecated and no longer used by the application. I've left it here for comparison 
+ * with its hooks based implementation, in ./App.js
  */
-function App(){
+class App extends React.Component {
 
-  const context = useContext(LoginContext)
-  const homeService = HomeService(new URL(HOME_PATH, API_BASE_URL), context.loginService.getToken())
+  static contextType = LoginContext
 
-  const [ homeInfo, setHomeInfo ] = useState()
+  async componentDidMount() {
+    const homeService = HomeService(new URL(HOME_PATH, API_BASE_URL), this.context.loginService.getToken())
+    const homeInfo = await homeService.getHomeInfo()
+    this.setState( { homeInfo } )
+  }
 
-  // The following hook executes after EVERY render...
-  useEffect(() => {
-    if (!homeInfo)
-      homeService.getHomeInfo().then((info) => setHomeInfo(info))
-  })
-
-  return (
-    <div className="App">
-      { !homeInfo ? 
-            <Loading /> : 
-            <RouteRenderer homeInfo={homeInfo} authToken={context.loginService.getToken()} />
-      }
-    </div>
-  )
+  render() {
+    return (
+      <div className="App">
+        { !this.state ? 
+              <Loading /> : 
+              <RouteRenderer homeInfo={this.state.homeInfo} authToken={this.context.loginService.getToken()} />
+        }
+      </div>
+    )
+  }
 }
 
 export default App

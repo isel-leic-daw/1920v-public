@@ -40,7 +40,7 @@ function initRequestFromAction(newValue, action, authToken) {
   // TODO: This should be a bit more generic, but you get where this is going. ;)
   return  {
     method: action.method,
-    headers: { 'Content-Type': 'application/json', 'Autorization': authToken },
+    headers: { 'Content-Type': 'application/json', 'Authorization': authToken },
     body: JSON.stringify({ value: newValue })
   }
 }

@@ -24,7 +24,7 @@ export function getTemperatureService(resourceUrl, authToken) {
       console.log(`TemperatureService.updateTarget(${newValue})`)
       const response = await fetch('http://localhost:8080/temperature/target', {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json', 'Autorization': authToken },
+        headers: { 'Content-Type': 'application/json', 'Authorization': authToken },
         body: JSON.stringify({ value: newValue })
       })
       const content = await response.json()

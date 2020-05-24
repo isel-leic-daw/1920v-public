@@ -35,9 +35,16 @@ export function getHomeService(homeUrl, authToken) {
     getHomeInfo: async () => {
       console.log(`HomeService.getHomeInfo()`)
       const response = await fetch(homeUrl, {
-        headers: { 'Authorization': authToken }
+        headers: authToken ? { 'Authorization': authToken } : { }
       })
-      return await response.json()
+      if (response.ok)
+        return await response.json()
+      else {
+        throw new Error(response.status === 401 ? 
+          "Invalid credentials" : 
+          "Could not get home resource"
+        )
+      }
     }
   }
 }
