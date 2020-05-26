@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import './App.css'
 import HvacPage from './HvacPage'
 import LoginPage from './login/LoginPage'
@@ -77,26 +77,26 @@ function RouteRenderer({ homeInfo, authToken }) {
 /**
  * The application's root component
  */
-class App extends React.Component {
+function App(){
 
-  static contextType = LoginContext
+  const context = useContext(LoginContext)
+  const homeService = HomeService(new URL(HOME_PATH, API_BASE_URL), context.loginService.getToken())
 
-  async componentDidMount() {
-    const homeService = HomeService(new URL(HOME_PATH, API_BASE_URL), this.context.loginService.getToken())
-    const homeInfo = await homeService.getHomeInfo()
-    this.setState( { homeInfo } )
-  }
+  const [ homeInfo, setHomeInfo ] = useState()
 
-  render() {
-    return (
-      <div className="App">
-        { !this.state ? 
-              <Loading /> : 
-              <RouteRenderer homeInfo={this.state.homeInfo} authToken={this.context.loginService.getToken()} />
-        }
-      </div>
-    )
-  }
+  // The effect only executes when its dependency fails the Object.is check
+  useEffect(() => {
+    homeService.getHomeInfo().then((info) => setHomeInfo(info))
+  }, [homeService])
+
+  return (
+    <div className="App">
+      { !homeInfo ? 
+            <Loading /> : 
+            <RouteRenderer homeInfo={homeInfo} authToken={context.loginService.getToken()} />
+      }
+    </div>
+  )
 }
 
 export default App
