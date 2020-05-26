@@ -5,32 +5,43 @@ function temperatureInfoFromSiren(sirenContent) {
   }
 }
 
+let temperatureService = undefined
+
 /**
  * Function used to obtain the service associated to the temperature resource
  * @param {URL} resourceUrl - The URL of the temperature resource
  */
 export function getTemperatureService(resourceUrl, authToken) {
-  return {
-    getTemperatureInfo: async () => {
-      console.log(`TemperatureService.getTemperatureInfo()`)
-      const response = await fetch(resourceUrl, {
-        headers: { 'Authorization': authToken }
-      })
-      const content = await response.json()
-      return temperatureInfoFromSiren(content)
-    },
 
-    updateTargetTemperature: async (newValue) => {
-      console.log(`TemperatureService.updateTarget(${newValue})`)
-      const response = await fetch('http://localhost:8080/temperature/target', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json', 'Authorization': authToken },
-        body: JSON.stringify({ value: newValue })
-      })
-      const content = await response.json()
-      return temperatureInfoFromSiren(content)
+  if (!temperatureService || authToken !== temperatureService.authToken 
+    || resourceUrl.toString() !== temperatureService.resourceUrl) {
+
+    temperatureService = {
+      resourceUrl: resourceUrl.toString(),
+      authToken,
+      getTemperatureInfo: async () => {
+        console.log(`TemperatureService.getTemperatureInfo()`)
+        const response = await fetch(resourceUrl, {
+          headers: { 'Authorization': authToken }
+        })
+        const content = await response.json()
+        return temperatureInfoFromSiren(content)
+      },
+
+      updateTargetTemperature: async (newValue) => {
+        console.log(`TemperatureService.updateTarget(${newValue})`)
+        const response = await fetch('http://localhost:8080/temperature/target', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json', 'Authorization': authToken },
+          body: JSON.stringify({ value: newValue })
+        })
+        const content = await response.json()
+        return temperatureInfoFromSiren(content)
+      }
     }
   }
+
+  return temperatureService
 }
 
 /**

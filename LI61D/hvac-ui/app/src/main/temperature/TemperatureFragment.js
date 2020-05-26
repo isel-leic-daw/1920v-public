@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import TemperatureCard from './TemperatureCard'
+import { useCallback } from 'react'
 
 /**
  * Component used to display the fragment with the HVAC's temperature control
@@ -15,23 +16,21 @@ function TemperatureFragment({ temperatureService }) {
   }
 
   const [temperatureState, setTemperatureState] = useState(initialTemperatureState)
-
-  async function fetchTemperatureInfo() {
+  
+  const fetchTemperatureInfo = useCallback(async () => {
     return temperatureService.getTemperatureInfo().then((temperature) => {
       if (temperature) { setTemperatureState(temperature) }
     })
-  }
+  }, [temperatureService, setTemperatureState])
 
-  // The following hook executes after EVERY render...
   useEffect(() => {
-    if (!temperatureState.current.value) fetchTemperatureInfo()
-  })
+    fetchTemperatureInfo()
+  }, [fetchTemperatureInfo])
 
-  // The following hook executes after EVERY render...
   useEffect(() => {
-    const timerId = setTimeout(() => { fetchTemperatureInfo() }, 10000)
-    return () => { clearTimeout(timerId) }
-  })
+    const timerId = setInterval(() => { fetchTemperatureInfo() }, 10000)
+    return () => { clearInterval(timerId) }
+  }, [fetchTemperatureInfo])
 
   const [updating, setUpdating] = useState(false)
 

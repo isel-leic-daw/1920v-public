@@ -84,11 +84,10 @@ function App(){
 
   const [ homeInfo, setHomeInfo ] = useState()
 
-  // The following hook executes after EVERY render...
+  // The effect only executes when its dependency fails the Object.is check
   useEffect(() => {
-    if (!homeInfo)
-      homeService.getHomeInfo().then((info) => setHomeInfo(info))
-  })
+    homeService.getHomeInfo().then((info) => setHomeInfo(info))
+  }, [homeService])
 
   return (
     <div className="App">
