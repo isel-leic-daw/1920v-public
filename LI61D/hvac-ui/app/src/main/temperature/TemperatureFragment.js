@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import TemperatureCard from './TemperatureCard'
+import { useCallback } from 'react'
 
 /**
  * Component used to display the fragment with the HVAC's temperature control
@@ -7,65 +8,57 @@ import TemperatureCard from './TemperatureCard'
  * @param {*} props - The props object with the following properties:
  *    temperatureService  - the service used to interact with the API's temperature resource
  */
-class TemperatureFragment extends React.Component {
+function TemperatureFragment({ temperatureService }) {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      temperature: { 
-        current: { value: "", label: "Current" },
-        target: { value: "", label: "Target" }
-      }
-    }
+  const initialTemperatureState =  { 
+    current: { value: "", label: "Current" },
+    target: { value: "", label: "Target" }
   }
 
-  async fetchTemperatureInfo() {
-    return this.props.temperatureService.getTemperatureInfo().then((temperature) => {
-      if (temperature) { this.setState( { temperature } ) }
+  const [temperatureState, setTemperatureState] = useState(initialTemperatureState)
+  
+  const fetchTemperatureInfo = useCallback(async () => {
+    return temperatureService.getTemperatureInfo().then((temperature) => {
+      if (temperature) { setTemperatureState(temperature) }
     })
-  }
+  }, [temperatureService, setTemperatureState])
 
-  async componentDidMount() {
-    this.fetchTemperatureInfo().then(() => { 
-      this.timerId = setInterval(() => { 
-        this.fetchTemperatureInfo()
-      }, 10000)
-    })
-  }
+  useEffect(() => {
+    fetchTemperatureInfo()
+  }, [fetchTemperatureInfo])
 
-  componentWillUnmount() {
-    if (this.timerId) {
-      clearInterval(this.timerId)
-    }
-    // TODO: cancel ongoing requests, if they exist
-  }
+  useEffect(() => {
+    const timerId = setInterval(() => { fetchTemperatureInfo() }, 10000)
+    return () => { clearInterval(timerId) }
+  }, [fetchTemperatureInfo])
 
-  handleTargetTemperatureChanged = async (oldValue, newValue) => {
-    this.setState({ updating: true })
+  const [updating, setUpdating] = useState(false)
+
+  async function handleTargetTemperatureChanged(oldValue, newValue) {
+    setUpdating(true)
     console.log(`Old value = ${oldValue}; New value = ${newValue}`)
-    this.props.temperatureService.updateTargetTemperature(newValue).then((updatedTemperature) => {
+    temperatureService.updateTargetTemperature(newValue).then((updatedTemperature) => {
       if (updatedTemperature) {
         console.log(`Result is ${JSON.stringify(updatedTemperature)}`)
-        this.setState({ temperature: updatedTemperature, updating: false })
+        setTemperatureState(updatedTemperature)
+        setUpdating(false)
       }
     })
   }
   
-  render() {
-    return (
-      <div className="ui text container">
-        <div className="ui centered cards">
-          <TemperatureCard value={this.state.temperature.current.value} 
-              label={this.state.temperature.current.label} />
+  return (
+    <div className="ui text container">
+      <div className="ui centered cards">
+        <TemperatureCard value={temperatureState.current.value} 
+            label={temperatureState.current.label} />
 
-          <TemperatureCard value={this.state.temperature.target.value} 
-              label={this.state.temperature.target.label} 
-              editable={true} disabled={this.state.temperature.target.value === "" || this.state.updating} 
-              onChange={this.handleTargetTemperatureChanged} />
-        </div>
+        <TemperatureCard value={temperatureState.target.value} 
+            label={temperatureState.target.label} 
+            editable={true} disabled={temperatureState.target.value === "" || updating} 
+            onChange={handleTargetTemperatureChanged} />
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default TemperatureFragment

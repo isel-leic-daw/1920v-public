@@ -27,17 +27,35 @@ export function getMockedHomeService() {
   }
 }
 
+let homeServiceInstance = undefined
+
 /**
- * Function used to obtain the service associated to the home resource
+ * Function used to obtain the service associated to the home resource. Whenever possible, 
+ * the same instance is returned.
  */
 export function getHomeService(homeUrl, authToken) {
-  return {
-    getHomeInfo: async () => {
-      console.log(`HomeService.getHomeInfo()`)
-      const response = await fetch(homeUrl, {
-        headers: { 'Authorization': authToken }
-      })
-      return await response.json()
-    }
-  }
+  if (!homeServiceInstance || authToken !== homeServiceInstance.authToken 
+          || homeUrl.toString() !== homeServiceInstance.homeUrlString) {
+
+        homeServiceInstance = {
+          homeUrlString: homeUrl.toString(),
+          authToken,
+          getHomeInfo: async () => {
+            console.log(`HomeService.getHomeInfo()`)
+            const response = await fetch(homeUrl, {
+              headers: authToken ? { 'Authorization': authToken } : { }
+            })
+            if (response.ok)
+              return await response.json()
+            else {
+              throw new Error(response.status === 401 ? 
+                "Invalid credentials" : 
+                "Could not get home resource"
+              )
+            }
+          }
+        }
+      }
+
+    return homeServiceInstance
 }
