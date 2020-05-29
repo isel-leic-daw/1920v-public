@@ -64,5 +64,14 @@ class ExampleController {
     @GetMapping("11")
     fun get11() = URI("https://www.example.com")
 
+    @GetMapping("12")
+    fun get12() = ResponseEntity.status(200)
+        .header("Set-Cookie", "name=value;SameSite=none")
+        .header("Custom-Header", "Value")
+        .header("Custom-Header2", "Value")
+        .body("Here is a cookie")
+
+    @PostMapping("13")
+    fun post13() = "Post successful"
 
 }
