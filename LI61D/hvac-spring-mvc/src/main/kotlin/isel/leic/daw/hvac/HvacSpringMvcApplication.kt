@@ -4,13 +4,11 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.DeserializationFeature
 import isel.leic.daw.hvac.common.APPLICATION_TYPE
 import isel.leic.daw.hvac.common.JSON_HOME_SUBTYPE
-import isel.leic.daw.hvac.common.ProblemJson
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
-import org.springframework.http.ResponseEntity
 import org.springframework.http.converter.HttpMessageConverter
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.web.servlet.HandlerInterceptor
@@ -56,13 +54,13 @@ class ApiConfig : WebMvcConfigurer {
 		registry.addInterceptor(SampleAuthorizationInterceptor())
 	}
 
+	// If we choose not to support CORS, then this is to be left commented out
 	override fun addCorsMappings(registry: CorsRegistry) {
-		// TODO: Revisit this to elaborate on the CORS protocol
-		registry
-				.addMapping("/**")
-				.allowedHeaders("*")
-				.allowedMethods("*")
-				.allowedOrigins("*")
+//		registry
+//				.addMapping("/**")
+//				.allowedHeaders("*")
+//				.allowedMethods("*")
+//				.allowedOrigins("*")
 	}
 }
 

@@ -10,8 +10,8 @@ import { Route, Switch, Redirect } from "react-router-dom"
 import LoginContext from './login/LoginContext'
 
 // TODO: this should be an environment variable
-const API_BASE_URL = "http://localhost:8080"
-const HOME_PATH = "/hvac"
+const API_BASE_URL = 'http://localhost:3000/api'
+const HOME_PATH = '/hvac'
 
 /**
  * Component used to display a loading message.
@@ -50,11 +50,11 @@ function RouteRenderer({ homeInfo, authToken }) {
   // Do we have a link with the 'temperature' rel-type? If so, we are good to go.
   const isOnline = homeInfo && homeInfo.resources.temperature
   const temperatureService = !isOnline ? undefined : 
-        TemperatureService(new URL(homeInfo.resources.temperature.href, API_BASE_URL), authToken)
+        TemperatureService(new URL(`${API_BASE_URL}${homeInfo.resources.temperature.href}`), API_BASE_URL, authToken)
   
   // Do we have a link with the 'power_state' rel-type? If so, we enable power control in the UI.
   const hvacService = !homeInfo || !homeInfo.resources.power_state ? undefined : 
-        HvacService(new URL(homeInfo.resources.power_state.href, API_BASE_URL), authToken) 
+        HvacService(new URL(`${API_BASE_URL}${homeInfo.resources.power_state.href}`), API_BASE_URL, authToken) 
 
   return (
     <Switch>
@@ -80,7 +80,7 @@ function RouteRenderer({ homeInfo, authToken }) {
 function App(){
 
   const context = useContext(LoginContext)
-  const homeService = HomeService(new URL(HOME_PATH, API_BASE_URL), context.loginService.getToken())
+  const homeService = HomeService(new URL(`${API_BASE_URL}${HOME_PATH}`), context.loginService.getToken())
 
   const [ homeInfo, setHomeInfo ] = useState()
 

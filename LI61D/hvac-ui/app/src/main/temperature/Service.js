@@ -11,7 +11,7 @@ let temperatureService = undefined
  * Function used to obtain the service associated to the temperature resource
  * @param {URL} resourceUrl - The URL of the temperature resource
  */
-export function getTemperatureService(resourceUrl, authToken) {
+export function getTemperatureService(resourceUrl, apiBaseUrl, authToken) {
 
   if (!temperatureService || authToken !== temperatureService.authToken 
     || resourceUrl.toString() !== temperatureService.resourceUrl) {
@@ -30,7 +30,8 @@ export function getTemperatureService(resourceUrl, authToken) {
 
       updateTargetTemperature: async (newValue) => {
         console.log(`TemperatureService.updateTarget(${newValue})`)
-        const response = await fetch('http://localhost:8080/temperature/target', {
+        // TODO: Remove this dependency to an hard-coded resource URL
+        const response = await fetch('http://localhost:3000/api/temperature/target', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json', 'Authorization': authToken },
           body: JSON.stringify({ value: newValue })
