@@ -48,9 +48,10 @@ function initRequestFromAction(newValue, action, authToken) {
 /**
  * Function used to obtain the service associated to the HVAC's power-state resource
  * @param {URL} resourceUrl  - The absolute URL of the HVAC's power-state resource
+ * @param {URL} apiBaseUrl   - The absolute base URL of the HVAC's API
  * @param {string} authToken - The authorization token to be added to the requests
  */
-export function getHvacService(resourceUrl, authToken) {
+export function getHvacService(resourceUrl, apiBaseUrl, authToken) {
   return {
     getPowerState: async () => {
       console.log(`HvacService.getPowerState()`)
@@ -65,9 +66,8 @@ export function getHvacService(resourceUrl, authToken) {
         throw new Error(`Unknown update power state action ${action.name}`)
       }
 
-      const baseUrl = resourceUrl
       console.log(`HvacService.updatePowerState(${newValue})`)
-      const response = await fetch(new URL(action.href, baseUrl), initRequestFromAction(newValue, action, authToken))
+      const response = await fetch(new URL(`${apiBaseUrl}${action.href}`), initRequestFromAction(newValue, action, authToken))
       return await response.json()
     },
 
