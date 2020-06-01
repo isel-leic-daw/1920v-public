@@ -228,3 +228,14 @@ Easter break
 
 ### 28/05/2020 - Practical class
 * Goal: [Project Phase 2](https://github.com/isel-leic-daw/1920v-public/wiki/phase-2)
+
+## Week 15
+### 01/06/2020 - Wrapping up
+* Goal: Considerations on the deployment of the solution
+* CORS support on the Web API: when to enable it? 
+* Disabling CORS support
+  * Consequences in the development environment
+  * Adding proxy behaviour to webpack's dev server
+    * Configuration of a React App created with [create-react-app](https://facebook.github.io/create-react-app/docs/getting-started) using [craco](https://github.com/gsoft-inc/craco)
+      * [Installation](https://github.com/gsoft-inc/craco/blob/master/packages/craco/README.md#installation)
+      * [Configuration Overview](https://github.com/gsoft-inc/craco/blob/master/packages/craco/README.md#configuration-overview)
