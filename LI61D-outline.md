@@ -239,3 +239,8 @@ Easter break
     * Configuration of a React App created with [create-react-app](https://facebook.github.io/create-react-app/docs/getting-started) using [craco](https://github.com/gsoft-inc/craco)
       * [Installation](https://github.com/gsoft-inc/craco/blob/master/packages/craco/README.md#installation)
       * [Configuration Overview](https://github.com/gsoft-inc/craco/blob/master/packages/craco/README.md#configuration-overview)
+* For reference:
+  * [CORS protocol](https://fetch.spec.whatwg.org/#http-cors-protocol)
+
+### 04/06/2020 - Practical class
+* Goal: [Project Phase 3]()
