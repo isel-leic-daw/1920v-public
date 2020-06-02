@@ -243,4 +243,4 @@ Easter break
   * [CORS protocol](https://fetch.spec.whatwg.org/#http-cors-protocol)
 
 ### 04/06/2020 - Practical class
-* Goal: [Project Phase 3]()
+* Goal: Finishing up [Project Phase 2](https://github.com/isel-leic-daw/1920v-public/wiki/phase-2) and preparing for [Project Phase 3]()
