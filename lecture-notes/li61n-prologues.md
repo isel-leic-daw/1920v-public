@@ -1,3 +1,19 @@
+# 2020/06/04
+  - 3 more weeks
+    - this week: access control
+    - next week (holiday on thursday): phase 3 + extras
+    - last week: phase 3 + extras
+  - phase 3
+    - published on June 8 (next monday)
+    - main goal: proper access control
+    - secondary goal: general improvements
+    - 4 weeks
+  - project evaluation start on July 6
+    - 4 weeks
+
+# 2020/04/23
+  - Start of the second part of the program: browser-based application development
+
 # 2020/04/16
   - HTTP intermediaries and HTTP caching
   - Project development support
