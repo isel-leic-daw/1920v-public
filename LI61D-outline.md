@@ -244,3 +244,6 @@ Easter break
 
 ### 04/06/2020 - Practical class
 * Goal: Finishing up [Project Phase 2](https://github.com/isel-leic-daw/1920v-public/wiki/phase-2) and preparing for [Project Phase 3]()
+
+## Week 16
+No classes during this week
