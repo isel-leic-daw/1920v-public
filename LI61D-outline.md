@@ -243,7 +243,30 @@ Easter break
   * [CORS protocol](https://fetch.spec.whatwg.org/#http-cors-protocol)
 
 ### 04/06/2020 - Practical class
-* Goal: Finishing up [Project Phase 2](https://github.com/isel-leic-daw/1920v-public/wiki/phase-2) and preparing for [Project Phase 3]()
+* Goal: Finishing up [Project Phase 2](https://github.com/isel-leic-daw/1920v-public/wiki/phase-2) and preparing for [Project Phase 3](https://github.com/isel-leic-daw/1920v-public/wiki/phase-3)
 
 ## Week 16
 No classes during this week
+
+## Week 17
+### 15/06/2020 - Wrapping up
+* Goal: Considerations on the deployment of the solution, continued
+* Adding access control to the Web API:
+  * Defining the access control policy 
+  * Authentication
+* OAuth 2.0 and OpenID Connect (overview)
+  * [Reference implementation of OpenID Connect and OAuth 2.0](https://github.com/mitreid-connect)
+  * [oidc-client](https://www.npmjs.com/package/oidc-client)
+* Documentation:
+  * ["Designing evolvable Web APIs: Chapter 15"](https://www.oreilly.com/library/view/designing-evolvable-web/9781449337919/ch15.html)
+  * ["Designing evolvable Web APIs: Chapter 16"](https://www.oreilly.com/library/view/designing-evolvable-web/9781449337919/ch16.html)
+* Lectures by Pedro Félix:
+  * [Access Control](https://educast.fccn.pt/vod/clips/1aww7s0lob/streaming.html?locale=pt)
+  * [OAuth 2.0 and OpenID Connect - part 1 (starts at 50m30s)](https://educast.fccn.pt/vod/clips/j8a7lq6d/streaming.html?locale=pt)
+  * [OAuth 2.0 and OpenID Connect - part 2](https://educast.fccn.pt/vod/clips/1aww7s0m3t/streaming.html?locale=pt)
+* For reference:
+  * [The OAuth 2.0 Framework](https://tools.ietf.org/html/rfc6749)
+  * [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html)
+
+### 18/06/2020 - Practical class
+* Goal: [Project Phase 3](https://github.com/isel-leic-daw/1920v-public/wiki/phase-3)
